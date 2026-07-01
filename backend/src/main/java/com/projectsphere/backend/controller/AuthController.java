@@ -17,40 +17,60 @@ public class AuthController {
     private StudentRepository repository;
 
     // ==========================
-    // Student/Admin Login
+    // Register
     // ==========================
-    @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody Student loginData) {
 
-        // Validate Input
-        if (loginData.getEmail() == null ||
-            loginData.getEmail().trim().isEmpty() ||
-            loginData.getPassword() == null ||
-            loginData.getPassword().trim().isEmpty()) {
+    @PostMapping("/register")
+    public ResponseEntity<?> register(@RequestBody Student student) {
 
-            return ResponseEntity
-                    .status(HttpStatus.BAD_REQUEST)
+        if (student.getEmail() == null ||
+            student.getPassword() == null) {
+
+            return ResponseEntity.badRequest()
                     .body("Email and Password are required");
         }
 
-        // Find user by email
+        Student existing = repository.findByEmail(student.getEmail());
+
+        if (existing != null) {
+            return ResponseEntity.status(HttpStatus.CONFLICT)
+                    .body("Email Already Exists");
+        }
+
+        Student saved = repository.save(student);
+
+        saved.setPassword(null);
+
+        return ResponseEntity.ok(saved);
+    }
+
+    // ==========================
+    // Login
+    // ==========================
+
+    @PostMapping("/login")
+    public ResponseEntity<?> login(@RequestBody Student loginData) {
+
+        if (loginData.getEmail() == null ||
+            loginData.getPassword() == null) {
+
+            return ResponseEntity.badRequest()
+                    .body("Email and Password are required");
+        }
+
         Student student = repository.findByEmail(loginData.getEmail());
 
         if (student == null) {
-            return ResponseEntity
-                    .status(HttpStatus.NOT_FOUND)
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
                     .body("Email Not Found");
         }
 
-        // Check password
         if (!student.getPassword().equals(loginData.getPassword())) {
 
-            return ResponseEntity
-                    .status(HttpStatus.UNAUTHORIZED)
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
                     .body("Invalid Password");
         }
 
-        // Do not return password
         student.setPassword(null);
 
         return ResponseEntity.ok(student);
