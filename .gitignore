@@ -1,0 +1,20 @@
+# React
+frontend/node_modules/
+frontend/dist/
+
+# Spring Boot
+backend/target/
+
+# IDE
+.vscode/
+.idea/
+*.classpath
+*.project
+*.settings/
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
