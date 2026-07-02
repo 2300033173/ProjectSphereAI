@@ -24,12 +24,11 @@ function Milestones() {
   }, []);
 
   const loadMilestones = async () => {
-    try {
+  try {
 
-      const result = await axios.get(
-    `http://localhost:9094/milestones/student/${localStorage.getItem("studentId")}`
-);
-
+    const result = await axios.get(
+      `https://projectsphereai-backend.onrender.com/milestones/student/${localStorage.getItem("studentId")}`
+    );
       setMilestones(result.data);
 
     } catch (error) {
@@ -42,9 +41,9 @@ function Milestones() {
     try {
 
       await axios.post(
-        "http://localhost:9094/milestones",
-        milestone
-      );
+  "https://projectsphereai-backend.onrender.com/milestones",
+  milestone
+);
 
       alert("Milestone Added Successfully");
 
@@ -72,10 +71,9 @@ function Milestones() {
 
     try {
 
-      await axios.delete(
-        `http://localhost:9094/milestones/${id}`
-      );
-
+     await axios.delete(
+  `https://projectsphereai-backend.onrender.com/milestones/${id}`
+);
       loadMilestones();
 
     } catch (error) {

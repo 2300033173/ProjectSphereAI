@@ -19,9 +19,9 @@ console.log("Student ID =", selectedStudentId);
   const loadStudents = async () => {
     try {
 
-      const response = await axios.get(
-        "http://localhost:9094/students"
-      );
+  const response = await axios.get(
+    "https://projectsphereai-backend.onrender.com/students"
+  );
 
       setStudents(response.data);
 

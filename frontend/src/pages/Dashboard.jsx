@@ -34,61 +34,57 @@ const studentId = localStorage.getItem("studentId");
 }, []);
 
   const loadStudent = async () => {
+  try {
+    const studentResponse = await axios.get(
+      `https://projectsphereai-backend.onrender.com/students/${studentId}`
+    );
 
-    try {
+    setStudent(studentResponse.data);
 
-      const response = await axios.get(
-  `http://localhost:9094/students/${studentId}`
-);
-      setStudent(response.data);
-
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  } catch (error) {
+    console.log(error);
+  }
+};
 
   const loadProjects = async () => {
+  try {
+    const projectsResponse = await axios.get(
+      `https://projectsphereai-backend.onrender.com/projects/student/${studentId}`
+    );
 
-    try {
+    setProjects(projectsResponse.data);
 
-      const response = await axios.get(
-  `http://localhost:9094/projects/student/${studentId}`
-);
-
-      setProjects(response.data);
-
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  } catch (error) {
+    console.log(error);
+  }
+};
 
   const loadMilestones = async () => {
+  try {
+    const milestonesResponse = await axios.get(
+      `https://projectsphereai-backend.onrender.com/milestones/student/${studentId}`
+    );
 
-    try {
+    setMilestones(milestonesResponse.data);
 
-     const response = await axios.get(
-  `http://localhost:9094/milestones/student/${studentId}`
-);
-      setMilestones(response.data);
-
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  } catch (error) {
+    console.log(error);
+  }
+};
 const loadAdminData = async () => {
 
   try {
 
     const studentsResponse = await axios.get(
-      "http://localhost:9094/students"
+      "https://projectsphereai-backend.onrender.com/students"
     );
 
     const projectsResponse = await axios.get(
-      "http://localhost:9094/projects"
+      "https://projectsphereai-backend.onrender.com/projects"
     );
 
     const milestonesResponse = await axios.get(
-      "http://localhost:9094/milestones"
+      "https://projectsphereai-backend.onrender.com/milestones"
     );
 
     setStudent({
@@ -102,11 +98,8 @@ const loadAdminData = async () => {
     setMilestones(milestonesResponse.data);
 
   } catch (error) {
-
     console.log(error);
-
   }
-
 };
   const completedProjects =
     projects.filter(

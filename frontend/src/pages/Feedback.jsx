@@ -28,8 +28,8 @@ function Feedback() {
     try {
 
       const result = await axios.get(
-        "http://localhost:9094/feedback"
-      );
+  "https://projectsphereai-backend.onrender.com/feedback"
+);
 
       setFeedbacks(result.data);
 
@@ -43,9 +43,9 @@ function Feedback() {
     try {
 
       await axios.post(
-        "http://localhost:9094/feedback",
-        feedback
-      );
+  "https://projectsphereai-backend.onrender.com/feedback",
+  feedback
+);
 
       alert("Feedback Submitted Successfully");
 

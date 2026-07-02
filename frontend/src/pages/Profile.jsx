@@ -44,9 +44,9 @@ const loadProfile = async () => {
 try {
 
 
-  const response = await axios.get(
-    `http://localhost:9094/students/${studentId}`
-  );
+ const response = await axios.get(
+  `https://projectsphereai-backend.onrender.com/students/${studentId}`
+);
 
  if (response.data && response.data.id) {
     setProfile(response.data);
@@ -123,10 +123,10 @@ if (
     alert("Enter a valid LinkedIn URL");
     return;
 }
-  await axios.put(
-    `http://localhost:9094/students/${studentId}`,
-    updatedProfile
-  );
+ await axios.put(
+  `https://projectsphereai-backend.onrender.com/students/${studentId}`,
+  updatedProfile
+);
 
   setProfile(updatedProfile);
 

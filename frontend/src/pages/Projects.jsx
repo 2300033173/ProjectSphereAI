@@ -49,16 +49,15 @@ const loadProjects = async () => {
 
     if (role === "ADMIN") {
 
-      result = await axios.get(
-        "http://localhost:9094/projects"
-      );
+    result = await axios.get(
+  "https://projectsphereai-backend.onrender.com/projects"
+);
 
     } else {
 
       result = await axios.get(
-        `http://localhost:9094/projects/student/${studentId}`
-      );
-
+  `https://projectsphereai-backend.onrender.com/projects/student/${studentId}`
+);
     }
 
     setProjects(result.data);
@@ -74,11 +73,10 @@ const loadProjects = async () => {
 
     try {
 
-      await axios.post(
-        "http://localhost:9094/projects",
-        project
-      );
-
+     await axios.post(
+  "https://projectsphereai-backend.onrender.com/projects",
+  project
+);
       alert("Project Added Successfully");
 
       loadProjects();
@@ -118,9 +116,8 @@ const loadProjects = async () => {
     try {
 
       await axios.delete(
-        `http://localhost:9094/projects/${id}`
-      );
-
+  `https://projectsphereai-backend.onrender.com/projects/${id}`
+);
       loadProjects();
 
     } catch (error) {
@@ -135,8 +132,8 @@ const loadProjects = async () => {
   try {
 
     await axios.put(
-      `http://localhost:9094/projects/approve/${id}`
-    );
+  `https://projectsphereai-backend.onrender.com/projects/approve/${id}`
+);
 
     loadProjects();
 
@@ -153,8 +150,8 @@ const rejectProject = async (id) => {
   try {
 
     await axios.put(
-      `http://localhost:9094/projects/reject/${id}`
-    );
+  `https://projectsphereai-backend.onrender.com/projects/reject/${id}`
+);
 
     loadProjects();
 

@@ -17,9 +17,7 @@ function ProjectTable() {
     try {
 
       const response =
-        await axios.get(
-          "http://localhost:9094/projects"
-        );
+        await axios.get("https://projectsphereai-backend.onrender.com/projects");
 
       setProjects(response.data);
 

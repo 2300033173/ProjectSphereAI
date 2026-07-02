@@ -18,16 +18,12 @@ const navigate = useNavigate();
   const loadData = async () => {
     try {
 
-      const studentResponse = await axios.get(
-        "http://localhost:9094/students"
-      );
+      const studentResponse = await axios.get("https://projectsphereai-backend.onrender.com/students");
 
       setStudents(studentResponse.data);
 
       try {
-        const projectResponse = await axios.get(
-          "http://localhost:9094/projects"
-        );
+        const projectResponse = await axios.get("https://projectsphereai-backend.onrender.com/projects");
 
         setProjects(projectResponse.data);
 

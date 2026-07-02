@@ -8,7 +8,7 @@ function Leaderboard() {
 
   useEffect(() => {
 
-    fetch("http://localhost:9094/students")
+    fetch("https://projectsphereai-backend.onrender.com/students")
       .then((res) => res.json())
       .then((data) => {
         setStudents(data);

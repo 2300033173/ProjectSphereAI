@@ -25,8 +25,8 @@ function Register() {
 
     try {
 
-      const response = await fetch(
-        "http://localhost:9094/students",
+     const response = await fetch(
+    "https://projectsphereai-backend.onrender.com/students",
         {
           method: "POST",
           headers: {

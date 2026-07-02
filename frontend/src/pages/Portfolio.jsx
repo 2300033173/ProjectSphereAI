@@ -32,9 +32,8 @@ const studentId =
   const loadPortfolio = async () => {
     try {
       const result = await axios.get(
-        "http://localhost:9094/portfolio"
-      );
-
+  "https://projectsphereai-backend.onrender.com/portfolio"
+);
       setPortfolios(result.data);
 
     } catch (error) {
@@ -60,7 +59,7 @@ const updatedPortfolio = {
 };
 
 await axios.post(
-  "http://localhost:9094/portfolio",
+  "https://projectsphereai-backend.onrender.com/portfolio",
   updatedPortfolio
 );
       alert("Portfolio Saved Successfully");
